@@ -1,10 +1,10 @@
-package cachemanager.cache;
+package cacheman.cache;
 
 import java.io.Serializable;
 
 import play.db.jpa.GenericModel;
 import play.libs.Codec;
-import cachemanager.common.Function;
+import cacheman.common.Function;
 
 public class NameSpaceCacheAdapter extends CacheAdapter {
 

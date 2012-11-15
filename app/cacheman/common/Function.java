@@ -1,4 +1,4 @@
-package cachemanager.common;
+package cacheman.common;
 
 public interface Function<P, R> {
 

@@ -1,4 +1,4 @@
-package cachemanager.cache;
+package cacheman.cache;
 
 public interface CacheKey {
 

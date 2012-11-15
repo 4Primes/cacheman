@@ -1,6 +1,6 @@
-package cachemanager.cache;
+package cacheman.cache;
 
-import cachemanager.common.Function;
+import cacheman.common.Function;
 
 public enum SampleCacheKey implements CacheKey {
 

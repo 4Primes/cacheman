@@ -1,4 +1,4 @@
-package cachemanager.cache;
+package cacheman.cache;
 
 import java.io.Serializable;
 
@@ -6,7 +6,7 @@ import play.Logger;
 import play.cache.Cache;
 import play.libs.Codec;
 import play.mvc.Scope;
-import cachemanager.cache.CacheKey.CacheScope;
+import cacheman.cache.CacheKey.CacheScope;
 
 public final class CacheManager {
 

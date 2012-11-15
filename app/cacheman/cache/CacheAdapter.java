@@ -1,11 +1,11 @@
-package cachemanager.cache;
+package cacheman.cache;
 
 import java.io.Serializable;
 import java.lang.reflect.Method;
 
 import play.db.jpa.GenericModel;
 import play.exceptions.UnexpectedException;
-import cachemanager.common.Function;
+import cacheman.common.Function;
 
 public class CacheAdapter {
 
