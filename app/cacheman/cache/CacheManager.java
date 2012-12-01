@@ -35,6 +35,7 @@ public final class CacheManager {
         StringBuilder key = new StringBuilder();
         if (adapter instanceof NameSpaceCacheAdapter) {
             final String ns = ((NameSpaceCacheAdapter) adapter).nameSpace;
+            Logger.info("önbellekten gelen ns: %s", Cache.get(ns));
             Long ts = Cache.get(ns, Long.class);
             if (ts == null) {
                 ts = System.currentTimeMillis();
