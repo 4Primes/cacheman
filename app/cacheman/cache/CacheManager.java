@@ -11,6 +11,7 @@ import cacheman.cache.CacheKey.CacheScope;
 public final class CacheManager {
 
     private static final String KEY_SEPERATOR = ":";
+    private static final String NS_PREFIX = "_ns_";
 
     /**
      * Do not instantiate this class. Only use the static methods provided.
@@ -34,8 +35,8 @@ public final class CacheManager {
         final CacheAdapter adapter = cacheKey.getAdapter();
         StringBuilder key = new StringBuilder();
         if (adapter instanceof NameSpaceCacheAdapter) {
-            final String ns = ((NameSpaceCacheAdapter) adapter).nameSpace;
-            Logger.info("önbellekten gelen ns: %s", Cache.get(ns));
+            final String ns = NS_PREFIX + ((NameSpaceCacheAdapter) adapter).nameSpace;
+            Logger.info("önbellekten gelen %s => %s", ns, Cache.get(ns));
             Long ts = Cache.get(ns, Long.class);
             if (ts == null) {
                 ts = System.currentTimeMillis();
@@ -111,9 +112,13 @@ public final class CacheManager {
     public static void invalidateNameSpace(final CacheKey cacheKey) {
         final CacheAdapter adapter = cacheKey.getAdapter();
         if (adapter instanceof NameSpaceCacheAdapter) {
-            final String ns = ((NameSpaceCacheAdapter) adapter).nameSpace;
-            Cache.incr(ns);
-            Logger.debug("Invalidated namespace %s", ns);
+            final String ns = NS_PREFIX + ((NameSpaceCacheAdapter) adapter).nameSpace;
+            Logger.info("invalidate edilecek %s => %s", ns, Cache.get(ns));
+            Long ts = Cache.get(ns, Long.class);
+            if (ts != null) {
+                Cache.incr(ns);
+                Logger.debug("Invalidated namespace %s", ns);
+            }
         }
     }
 }
